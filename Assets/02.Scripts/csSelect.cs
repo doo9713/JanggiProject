@@ -18,4 +18,13 @@ public class csSelect : MonoBehaviour
     {
         SceneManager.LoadScene("03.HelpScenes", LoadSceneMode.Single);
     }
+
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
