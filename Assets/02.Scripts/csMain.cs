@@ -1,12 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csMain : MonoBehaviour {
-
+public class csMain : MonoBehaviour
+{
     public static bool player = true;       // true is player1
                                             // false is player2
     public static bool check = false;       // move check
     public static bool[,] coordialtes = new bool[4, 3];
+
+    /* check all piece clicked */
+    public static bool g_Jang = false;
+    public static bool g_Sang = false;
+    public static bool g_Wang = false;
+    public static bool g_Ja = false;
+
+    public static bool r_Jang = false;
+    public static bool r_Sang = false;
+    public static bool r_Wang = false;
+    public static bool r_Ja = false;
 
     void Start()
     {

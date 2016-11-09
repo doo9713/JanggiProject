@@ -14,7 +14,7 @@ public class csSample : MonoBehaviour
     void Update()
     {
         /* 물체의 움직임 연습 */
-        if (csMain.check && csMain.player)
+        if (csMain.check && csMain.player && csMain.g_Jang)
         {
             obj = GameObject.Find("(" + csPointSample.moveA + "," + csPointSample.moveB + ")").transform;
             speed += Time.deltaTime * 5.0f;
@@ -29,6 +29,7 @@ public class csSample : MonoBehaviour
                 csPointSample.moveA = 0;
                 csPointSample.moveB = 0;
                 speed = 0.0f;
+                csMain.g_Jang = false;
             }
         }
     }
@@ -37,6 +38,15 @@ public class csSample : MonoBehaviour
     {
         if (csMain.player)
         {
+            csMain.g_Sang = false;
+            csMain.g_Jang = true;
+            csMain.g_Ja = false;
+            csMain.g_Wang = false;
+
+            var clones = GameObject.FindGameObjectsWithTag("clone");
+            foreach (var clone in clones)
+                Destroy(clone);
+
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -64,6 +74,5 @@ public class csSample : MonoBehaviour
                 }
             }
         }
-
     }
 }

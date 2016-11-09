@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csPointSample : MonoBehaviour {
-
+public class csPointSample : MonoBehaviour
+{
     public static int moveA;
     public static int moveB;
 
@@ -18,7 +18,6 @@ public class csPointSample : MonoBehaviour {
                 }
         }
         csMain.check = true;
-        //     Destroy(transform.gameObject);
 
         var clones = GameObject.FindGameObjectsWithTag("clone");
         foreach (var clone in clones)

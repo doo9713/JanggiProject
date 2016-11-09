@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csSample2 : MonoBehaviour
+public class csSampleSang : MonoBehaviour
 {
     public GameObject point;
 
@@ -14,7 +14,7 @@ public class csSample2 : MonoBehaviour
     void Update()
     {
         /* 물체의 움직임 연습 */
-        if (csMain.check && !csMain.player && csMain.r_Jang)
+        if (csMain.check && csMain.player && csMain.g_Sang)
         {
             obj = GameObject.Find("(" + csPointSample.moveA + "," + csPointSample.moveB + ")").transform;
             speed += Time.deltaTime * 5.0f;
@@ -24,24 +24,24 @@ public class csSample2 : MonoBehaviour
             {
                 csMain.coordialtes[tempA, tempB] = false;
                 csMain.coordialtes[csPointSample.moveA, csPointSample.moveB] = true;
-                csMain.player = true;
+                csMain.player = false;
                 csMain.check = false;
                 csPointSample.moveA = 0;
                 csPointSample.moveB = 0;
                 speed = 0.0f;
-                csMain.r_Jang = false;
+                csMain.g_Sang = false;
             }
         }
     }
 
     void OnMouseDown()
     {
-        if (!csMain.player)
+        if (csMain.player)
         {
-            csMain.r_Sang = false;
-            csMain.r_Jang = true;
-            csMain.r_Ja = false;
-            csMain.r_Wang = false;
+            csMain.g_Sang = true;
+            csMain.g_Jang = false;
+            csMain.g_Ja = false;
+            csMain.g_Wang = false;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
@@ -57,21 +57,11 @@ public class csSample2 : MonoBehaviour
                     }
             }
 
-            for (int i = -1; i < 2; i++)
+            if (tempA + 1 < 4 && !csMain.coordialtes[tempA + 1, tempB])
             {
-                if (tempA + i > -1 && tempA + i < 4 && !csMain.coordialtes[tempA + i, tempB])
-                {
-                    Instantiate(point,
-                        GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position - Vector3.forward * (-0.26f),
-                        GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
-                }
-
-                if (tempB + i > -1 && tempB + i < 3 && !csMain.coordialtes[tempA, tempB + i])
-                {
-                    Instantiate(point,
-                        GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position - Vector3.forward * (-0.26f),
-                        GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
-                }
+                Instantiate(point,
+                       GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.position - Vector3.forward * (-0.26f),
+                       GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.rotation);
             }
         }
     }

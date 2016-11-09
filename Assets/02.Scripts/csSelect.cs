@@ -2,8 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class csSelect : MonoBehaviour {
-
+public class csSelect : MonoBehaviour
+{
 	public void playbutton()
     {
         SceneManager.LoadScene("01.PlayScenes", LoadSceneMode.Single);
