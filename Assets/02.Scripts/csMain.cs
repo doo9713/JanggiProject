@@ -6,7 +6,6 @@ public class csMain : MonoBehaviour
     public static bool player = true;       // true is player1
                                             // false is player2
     public static bool check = false;       // move check
-    public static bool[,] coordinates = new bool[4, 3];
     public static bool[,] r_coordinates = new bool[4, 3];
     public static bool[,] g_coordinates = new bool[4, 3];
 
@@ -31,7 +30,6 @@ public class csMain : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                coordinates[i, j] = false;
                 r_coordinates[i, j] = false;
                 g_coordinates[i, j] = false;
             }    
@@ -55,11 +53,6 @@ public class csMain : MonoBehaviour
         g_jang.position = GameObject.Find("(0,0)").transform.position;
         g_ja.position = GameObject.Find("(1,1)").transform.position;
 
-        coordinates[0, 0] = true;
-        coordinates[0, 1] = true;
-        coordinates[0, 2] = true;
-        coordinates[1, 1] = true;
-
         g_coordinates[0, 0] = true;
         g_coordinates[0, 1] = true;
         g_coordinates[0, 2] = true;
@@ -70,11 +63,6 @@ public class csMain : MonoBehaviour
         r_sang.position = GameObject.Find("(3,0)").transform.position;
         r_jang.position = GameObject.Find("(3,2)").transform.position;
         r_ja.position = GameObject.Find("(2,1)").transform.position;
-
-        coordinates[3, 0] = true;
-        coordinates[3, 1] = true;
-        coordinates[3, 2] = true;
-        coordinates[2, 1] = true;
 
         r_coordinates[3, 0] = true;
         r_coordinates[3, 1] = true;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csSample : MonoBehaviour
+public class csMover_Jang : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
@@ -15,10 +15,9 @@ public class csSample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* 물체의 움직임 연습 */
-        if (csMain.check && csMain.player && csMain.g_Jang)
+        if (csMain.check && !csMain.player && csMain.r_Jang)
         {
-            if(csMain.eat)
+            if (csMain.eat)
             {
                 destA = csPointKillSample.moveA;
                 destB = csPointKillSample.moveB;
@@ -34,26 +33,26 @@ public class csSample : MonoBehaviour
 
             if (transform.position == obj.position)
             {
-                csMain.g_coordinates[tempA, tempB] = false;
-                csMain.g_coordinates[destA, destB] = true;
-                csMain.player = false;
+                csMain.r_coordinates[tempA, tempB] = false;
+                csMain.r_coordinates[destA, destB] = true;
+                csMain.player = true;
                 csMain.check = false;
                 destA = 0;
                 destB = 0;
                 speed = 0.0f;
-                csMain.g_Jang = false;
+                csMain.r_Jang = false;
             }
         }
     }
 
     void OnMouseDown()
     {
-        if (csMain.player)
+        if (!csMain.player)
         {
-            csMain.g_Sang = false;
-            csMain.g_Jang = true;
-            csMain.g_Ja = false;
-            csMain.g_Wang = false;
+            csMain.r_Ja = false;
+            csMain.r_Jang = true;
+            csMain.r_Sang = false;
+            csMain.r_Wang = false;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
@@ -71,9 +70,9 @@ public class csSample : MonoBehaviour
 
             for (int i = -1; i < 2; i += 2)
             {
-                if (tempA + i > -1 && tempA + i < 4 && !csMain.g_coordinates[tempA + i, tempB])
+                if (tempA + i > -1 && tempA + i < 4 && !csMain.r_coordinates[tempA + i, tempB])
                 {
-                    if (!csMain.r_coordinates[tempA + i, tempB])
+                    if (!csMain.g_coordinates[tempA + i, tempB])
                         Instantiate(point,
                             GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position + Vector3.forward * 0.26f,
                             GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
@@ -83,9 +82,9 @@ public class csSample : MonoBehaviour
                             GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
                 }
 
-                if (tempB + i > -1 && tempB + i < 3 && !csMain.g_coordinates[tempA, tempB + i])
+                if (tempB + i > -1 && tempB + i < 3 && !csMain.r_coordinates[tempA, tempB + i])
                 {
-                    if (!csMain.r_coordinates[tempA, tempB + i])
+                    if (!csMain.g_coordinates[tempA, tempB + i])
                         Instantiate(point,
                             GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
                             GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);

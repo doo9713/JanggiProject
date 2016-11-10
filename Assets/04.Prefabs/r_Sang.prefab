@@ -11,7 +11,6 @@ GameObject:
   - 33: {fileID: 3328740}
   - 65: {fileID: 6524280}
   - 23: {fileID: 2338576}
-  - 114: {fileID: 11469350}
   m_Layer: 0
   m_Name: r_Sang
   m_TagString: Untagged
@@ -77,18 +76,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11469350
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86855d8bdc2be9c44bf2178b08a20c7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  point: {fileID: 196530, guid: 3fc99c6b3250f864abd83e56f6f0cc18, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
