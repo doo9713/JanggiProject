@@ -6,7 +6,9 @@ public class csMain : MonoBehaviour
     public static bool player = true;       // true is player1
                                             // false is player2
     public static bool check = false;       // move check
-    public static bool[,] coordialtes = new bool[4, 3];
+    public static bool[,] coordinates = new bool[4, 3];
+    public static bool[,] r_coordinates = new bool[4, 3];
+    public static bool[,] g_coordinates = new bool[4, 3];
 
     /* check all piece clicked */
     public static bool g_Jang = false;
@@ -19,12 +21,20 @@ public class csMain : MonoBehaviour
     public static bool r_Wang = false;
     public static bool r_Ja = false;
 
+    /* check eat */
+    public static bool eat = false;     // ture is eat
+                                        // false is not eat
+
     void Start()
     {
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 3; j++)
-                coordialtes[i, j] = false;
+            {
+                coordinates[i, j] = false;
+                r_coordinates[i, j] = false;
+                g_coordinates[i, j] = false;
+            }    
         }
 
         /* 초록말에 대한 위치지정 변수 */
@@ -45,10 +55,15 @@ public class csMain : MonoBehaviour
         g_jang.position = GameObject.Find("(0,0)").transform.position;
         g_ja.position = GameObject.Find("(1,1)").transform.position;
 
-        coordialtes[0, 0] = true;
-        coordialtes[0, 1] = true;
-        coordialtes[0, 2] = true;
-        coordialtes[1, 1] = true;
+        coordinates[0, 0] = true;
+        coordinates[0, 1] = true;
+        coordinates[0, 2] = true;
+        coordinates[1, 1] = true;
+
+        g_coordinates[0, 0] = true;
+        g_coordinates[0, 1] = true;
+        g_coordinates[0, 2] = true;
+        g_coordinates[1, 1] = true;
 
         /* 빨강말 위치지정 */
         r_wang.position = GameObject.Find("(3,1)").transform.position;
@@ -56,9 +71,14 @@ public class csMain : MonoBehaviour
         r_jang.position = GameObject.Find("(3,2)").transform.position;
         r_ja.position = GameObject.Find("(2,1)").transform.position;
 
-        coordialtes[3, 0] = true;
-        coordialtes[3, 1] = true;
-        coordialtes[3, 2] = true;
-        coordialtes[2, 1] = true;
+        coordinates[3, 0] = true;
+        coordinates[3, 1] = true;
+        coordinates[3, 2] = true;
+        coordinates[2, 1] = true;
+
+        r_coordinates[3, 0] = true;
+        r_coordinates[3, 1] = true;
+        r_coordinates[3, 2] = true;
+        r_coordinates[2, 1] = true;
     }
 }

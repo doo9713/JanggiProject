@@ -22,8 +22,8 @@ public class csSampleJa2 : MonoBehaviour
 
             if (transform.position == obj.position)
             {
-                csMain.coordialtes[tempA, tempB] = false;
-                csMain.coordialtes[csPointSample.moveA, csPointSample.moveB] = true;
+                csMain.coordinates[tempA, tempB] = false;
+                csMain.coordinates[csPointSample.moveA, csPointSample.moveB] = true;
                 csMain.player = true;
                 csMain.check = false;
                 csPointSample.moveA = 0;
@@ -46,6 +46,7 @@ public class csSampleJa2 : MonoBehaviour
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
                 Destroy(clone);
+
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -56,7 +57,7 @@ public class csSampleJa2 : MonoBehaviour
                     }
             }
 
-            if (tempA - 1 > -1  && !csMain.coordialtes[tempA-1, tempB])
+            if (tempA - 1 > -1  && !csMain.coordinates[tempA-1, tempB])
             {
                 Instantiate(point,
                        GameObject.Find("(" + (tempA-1) + "," + tempB + ")").transform.position - Vector3.forward * (-0.26f),

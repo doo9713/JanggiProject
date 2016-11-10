@@ -4,11 +4,13 @@ using System.Collections;
 public class csSample2 : MonoBehaviour
 {
     public GameObject point;
+    public GameObject pointkill;
 
     Transform obj;
 
     float speed = 0.0f;
     int tempA = 0, tempB = 0;
+    int destA = 0, destB = 0;
 
     // Update is called once per frame
     void Update()
@@ -16,18 +18,28 @@ public class csSample2 : MonoBehaviour
         /* 물체의 움직임 연습 */
         if (csMain.check && !csMain.player && csMain.r_Jang)
         {
-            obj = GameObject.Find("(" + csPointSample.moveA + "," + csPointSample.moveB + ")").transform;
+            if (csMain.eat)
+            {
+                destA = csPointKillSample.moveA;
+                destB = csPointKillSample.moveB;
+            }
+            else
+            {
+                destA = csPointSample.moveA;
+                destB = csPointSample.moveB;
+            }
+            obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
             transform.position = Vector3.Lerp(transform.position, obj.position, speed);
 
             if (transform.position == obj.position)
             {
-                csMain.coordialtes[tempA, tempB] = false;
-                csMain.coordialtes[csPointSample.moveA, csPointSample.moveB] = true;
+                csMain.r_coordinates[tempA, tempB] = false;
+                csMain.r_coordinates[destA, destB] = true;
                 csMain.player = true;
                 csMain.check = false;
-                csPointSample.moveA = 0;
-                csPointSample.moveB = 0;
+                destA = 0;
+                destB = 0;
                 speed = 0.0f;
                 csMain.r_Jang = false;
             }
@@ -57,20 +69,30 @@ public class csSample2 : MonoBehaviour
                     }
             }
 
-            for (int i = -1; i < 2; i++)
+            for (int i = -1; i < 2; i += 2)
             {
-                if (tempA + i > -1 && tempA + i < 4 && !csMain.coordialtes[tempA + i, tempB])
+                if (tempA + i > -1 && tempA + i < 4 && !csMain.r_coordinates[tempA + i, tempB])
                 {
-                    Instantiate(point,
-                        GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position - Vector3.forward * (-0.26f),
-                        GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
+                    if (!csMain.g_coordinates[tempA + i, tempB])
+                        Instantiate(point,
+                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position + Vector3.forward * 0.26f,
+                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
+                    else
+                        Instantiate(pointkill,
+                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position - Vector3.forward * 0.26f,
+                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
                 }
 
-                if (tempB + i > -1 && tempB + i < 3 && !csMain.coordialtes[tempA, tempB + i])
+                if (tempB + i > -1 && tempB + i < 3 && !csMain.r_coordinates[tempA, tempB + i])
                 {
-                    Instantiate(point,
-                        GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position - Vector3.forward * (-0.26f),
-                        GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
+                    if (!csMain.g_coordinates[tempA, tempB + i])
+                        Instantiate(point,
+                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
+                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
+                    else
+                        Instantiate(pointkill,
+                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
+                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
                 }
             }
         }

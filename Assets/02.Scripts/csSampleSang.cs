@@ -22,8 +22,8 @@ public class csSampleSang : MonoBehaviour
 
             if (transform.position == obj.position)
             {
-                csMain.coordialtes[tempA, tempB] = false;
-                csMain.coordialtes[csPointSample.moveA, csPointSample.moveB] = true;
+                csMain.coordinates[tempA, tempB] = false;
+                csMain.coordinates[csPointSample.moveA, csPointSample.moveB] = true;
                 csMain.player = false;
                 csMain.check = false;
                 csPointSample.moveA = 0;
@@ -57,7 +57,7 @@ public class csSampleSang : MonoBehaviour
                     }
             }
 
-            if (tempA + 1 < 4 && !csMain.coordialtes[tempA + 1, tempB])
+            if (tempA + 1 < 4 && !csMain.coordinates[tempA + 1, tempB])
             {
                 Instantiate(point,
                        GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.position - Vector3.forward * (-0.26f),
