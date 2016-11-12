@@ -5,6 +5,7 @@ public class csMoveg_Ja : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
+    public GameObject dead;
 
     Transform obj;
 
@@ -25,8 +26,10 @@ public class csMoveg_Ja : MonoBehaviour
             destA = csPointSample.moveA;
             destB = csPointSample.moveB;
         }
+
         if (csMain.check && csMain.player && csMain.g_Ja)
         {
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
             transform.position = Vector3.Lerp(transform.position, obj.position, speed);
@@ -41,6 +44,7 @@ public class csMoveg_Ja : MonoBehaviour
                 destB = 0;
                 speed = 0.0f;
                 csMain.g_Ja = false;
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }
         }
     }
@@ -78,6 +82,33 @@ public class csMoveg_Ja : MonoBehaviour
                     Instantiate(pointkill,
                            GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.position - Vector3.forward * 0.26f,
                            GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.rotation);
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!gameObject.GetComponent<BoxCollider>().isTrigger)
+        {
+            Destroy(gameObject);
+
+            switch (csMain.g_deadPiece)
+            {
+                case 0:
+                    Instantiate(dead,
+                         GameObject.Find("(3,-1)").transform.position + Vector3.forward * 0.26f,
+                         GameObject.Find("(3,-1)").transform.rotation);
+                    break;
+                case 1:
+                    Instantiate(dead,
+                         GameObject.Find("(2,-1)").transform.position + Vector3.forward * 0.26f,
+                         GameObject.Find("(2,-1)").transform.rotation);
+                    break;
+                case 2:
+                    Instantiate(dead,
+                         GameObject.Find("(1,-1)").transform.position + Vector3.forward * 0.26f,
+                         GameObject.Find("(1,-1)").transform.rotation);
+                    break;
             }
         }
     }

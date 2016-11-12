@@ -25,8 +25,10 @@ public class csMover_Ja : MonoBehaviour
             destA = csPointSample.moveA;
             destB = csPointSample.moveB;
         }
+
         if (csMain.check && !csMain.player && csMain.r_Ja)
         {
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
             transform.position = Vector3.Lerp(transform.position, obj.position, speed);
@@ -41,6 +43,7 @@ public class csMover_Ja : MonoBehaviour
                 destB = 0;
                 speed = 0.0f;
                 csMain.r_Ja = false;
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }
         }
     }
@@ -79,6 +82,14 @@ public class csMover_Ja : MonoBehaviour
                            GameObject.Find("(" + (tempA - 1) + "," + tempB + ")").transform.position - Vector3.forward * 0.26f,
                            GameObject.Find("(" + (tempA - 1) + "," + tempB + ")").transform.rotation);
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!gameObject.GetComponent<BoxCollider>().isTrigger)
+        {
+            Destroy(gameObject);
         }
     }
 }

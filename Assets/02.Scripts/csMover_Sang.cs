@@ -70,28 +70,28 @@ public class csMover_Sang : MonoBehaviour
 
             for (int i = -1; i < 2; i += 2)
             {
-                if (tempA + i > -1 && tempA + i < 4 && !csMain.r_coordinates[tempA + i, tempB])
+                if ((tempA + i > -1 && tempA + i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA + i, tempB + i])
                 {
-                    if (!csMain.g_coordinates[tempA + i, tempB])
+                    if (!csMain.g_coordinates[tempA + i, tempB + i])
                         Instantiate(point,
-                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position + Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
+                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
+                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.rotation);
                     else
                         Instantiate(pointkill,
-                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.position - Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA + i) + "," + tempB + ")").transform.rotation);
+                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
+                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.rotation);
                 }
 
-                if (tempB + i > -1 && tempB + i < 3 && !csMain.r_coordinates[tempA, tempB + i])
+                if ((tempA - i > -1 && tempA - i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA - i, tempB + i])
                 {
-                    if (!csMain.g_coordinates[tempA, tempB + i])
+                    if (!csMain.g_coordinates[tempA - i, tempB + i])
                         Instantiate(point,
-                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
-                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
+                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
+                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.rotation);
                     else
                         Instantiate(pointkill,
-                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
-                            GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
+                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
+                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.rotation);
                 }
             }
         }

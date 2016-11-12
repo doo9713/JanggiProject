@@ -6,7 +6,7 @@ public class csMain : MonoBehaviour
     public static bool player = true;       // true is player1
                                             // false is player2
     public static bool check = false;       // move check
-    public static bool[,] r_coordinates = new bool[4, 3];
+    public static bool[,] r_coordinates = new bool[4, 3];   // check where is piece
     public static bool[,] g_coordinates = new bool[4, 3];
 
     /* check all piece clicked */
@@ -23,6 +23,9 @@ public class csMain : MonoBehaviour
     /* check eat */
     public static bool eat = false;     // ture is eat
                                         // false is not eat
+
+    public static int g_deadPiece = 0;
+    public static int r_deadPiece = 0;  // catch piece maximam 2
 
     void Start()
     {
