@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3340644}
   - 136: {fileID: 13698542}
   - 23: {fileID: 2315780}
-  - 114: {fileID: 11498972}
+  - 114: {fileID: 11443614}
   m_Layer: 0
   m_Name: Point
   m_TagString: clone
@@ -65,7 +65,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196530}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11498972
+--- !u!114 &11443614
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 196530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16388e81132fc404d9a9ef6caf3705ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a780a6d4bbba0d4b85ffc1a1324afe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &13698542

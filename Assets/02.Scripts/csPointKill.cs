@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csPointKillSample : MonoBehaviour {
-
+public class csPointKill : MonoBehaviour
+{
     public static int moveA;
     public static int moveB;
 
@@ -17,6 +17,7 @@ public class csPointKillSample : MonoBehaviour {
                     moveB = j;
                 }
         }
+
         csMain.check = true;
         csMain.eat = true;
 

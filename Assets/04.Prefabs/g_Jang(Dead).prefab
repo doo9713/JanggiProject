@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3321384}
   - 65: {fileID: 6580054}
   - 23: {fileID: 2330752}
+  - 114: {fileID: 11437880}
   m_Layer: 0
   m_Name: g_Jang(Dead)
   m_TagString: Untagged
@@ -76,6 +77,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11437880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d94f1a96948c7b449c4a8105e21f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: {fileID: 196530, guid: 3fc99c6b3250f864abd83e56f6f0cc18, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

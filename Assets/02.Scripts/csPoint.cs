@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csPointSample : MonoBehaviour
+public class csPoint : MonoBehaviour
 {
     public static int moveA;
     public static int moveB;
@@ -17,6 +17,7 @@ public class csPointSample : MonoBehaviour
                     moveB = j;
                 }
         }
+
         csMain.check = true;
         csMain.eat = false;
 

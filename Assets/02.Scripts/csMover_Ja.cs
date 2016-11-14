@@ -20,13 +20,13 @@ public class csMover_Ja : MonoBehaviour
         {
             if (csMain.eat)
             {
-                destA = csPointKillSample.moveA;
-                destB = csPointKillSample.moveB;
+                destA = csPointKill.moveA;
+                destB = csPointKill.moveB;
             }
             else
             {
-                destA = csPointSample.moveA;
-                destB = csPointSample.moveB;
+                destA = csPoint.moveA;
+                destB = csPoint.moveB;
             }
 
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
@@ -91,13 +91,13 @@ public class csMover_Ja : MonoBehaviour
             int x, y;
             if (csMain.eat)
             {
-                x = csPointKillSample.moveA;
-                y = csPointKillSample.moveB;
+                x = csPointKill.moveA;
+                y = csPointKill.moveB;
             }
             else
             {
-                x = csPointSample.moveA;
-                y = csPointSample.moveB;
+                x = csPoint.moveA;
+                y = csPoint.moveB;
             }
 
             if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
