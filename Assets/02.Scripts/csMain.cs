@@ -25,6 +25,9 @@ public class csMain : MonoBehaviour
     public static bool eat = false;     // ture is eat
                                         // false is not eat
 
+    public static int deadg_Piece = 0;
+    public static int deadr_Piece = 0;
+
     void Start()
     {
         for (int i = 0; i < 4; i++)

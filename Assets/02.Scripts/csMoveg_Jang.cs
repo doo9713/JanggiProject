@@ -5,9 +5,10 @@ public class csMoveg_Jang : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
+    public GameObject dead;
 
     Transform obj;
-    
+
     float speed = 0.0f;
     int tempA = 0, tempB = 0;
     int destA = 0, destB = 0;
@@ -119,6 +120,14 @@ public class csMoveg_Jang : MonoBehaviour
                 csMain.g_coordinates[x, y] = false;
 
                 Destroy(gameObject);
+
+                Instantiate(dead,
+                     GameObject.Find("(" + (3 - csMain.deadg_Piece) + ",-1)").transform.position,
+                     Quaternion.Euler(0, 0, 180));
+
+                csMain.deadg_Piece++;
+                if (csMain.deadg_Piece == 3)
+                    csMain.deadg_Piece = 0;
             }
         }
     }

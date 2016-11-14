@@ -5,6 +5,7 @@ public class csMoveg_Sang : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
+    public GameObject dead;
 
     Transform obj;
 
@@ -71,7 +72,7 @@ public class csMoveg_Sang : MonoBehaviour
 
             for (int i = -1; i < 2; i += 2)
             {
-                if ((tempA + i > -1 && tempA + i < 4) && (tempB + i > -1 && tempB + i <3) && !csMain.g_coordinates[tempA + i, tempB + i])
+                if ((tempA + i > -1 && tempA + i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.g_coordinates[tempA + i, tempB + i])
                 {
                     if (!csMain.r_coordinates[tempA + i, tempB + i])
                         Instantiate(point,
@@ -119,6 +120,14 @@ public class csMoveg_Sang : MonoBehaviour
                 csMain.g_coordinates[x, y] = false;
 
                 Destroy(gameObject);
+
+                Instantiate(dead,
+                    GameObject.Find("(" + (3 - csMain.deadg_Piece) + ",-1)").transform.position,
+                    Quaternion.Euler(0, 0, 180));
+
+                csMain.deadg_Piece++;
+                if (csMain.deadg_Piece == 3)
+                    csMain.deadg_Piece = 0;
             }
         }
     }

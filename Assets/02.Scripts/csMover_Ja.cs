@@ -5,6 +5,7 @@ public class csMover_Ja : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
+    public GameObject dead;
 
     Transform obj;
 
@@ -104,6 +105,14 @@ public class csMover_Ja : MonoBehaviour
                 csMain.r_coordinates[x, y] = false;
 
                 Destroy(gameObject);
+
+                Instantiate(dead,
+                    GameObject.Find("(" + csMain.deadr_Piece + ",3)").transform.position,
+                    Quaternion.Euler(0, 0, 0));
+
+                csMain.deadr_Piece++;
+                if (csMain.deadr_Piece == 3)
+                    csMain.deadr_Piece = 0;
             }
         }
     }

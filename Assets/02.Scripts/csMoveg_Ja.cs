@@ -5,6 +5,7 @@ public class csMoveg_Ja : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
+    public GameObject dead;
 
     Transform obj;
 
@@ -88,6 +89,7 @@ public class csMoveg_Ja : MonoBehaviour
         if (!gameObject.GetComponent<BoxCollider>().isTrigger)
         {
             int x, y;
+
             if (csMain.eat)
             {
                 x = csPointKillSample.moveA;
@@ -104,6 +106,14 @@ public class csMoveg_Ja : MonoBehaviour
                 csMain.g_coordinates[x, y] = false;
 
                 Destroy(gameObject);
+
+                Instantiate(dead,
+                          GameObject.Find("(" + (3 - csMain.deadg_Piece) + ",-1)").transform.position,
+                          Quaternion.Euler(0, 0, 180));
+
+                csMain.deadg_Piece++;
+                if (csMain.deadg_Piece == 3)
+                    csMain.deadg_Piece = 0;
             }
         }
     }
