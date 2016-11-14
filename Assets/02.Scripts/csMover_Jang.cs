@@ -27,6 +27,8 @@ public class csMover_Jang : MonoBehaviour
                 destA = csPointSample.moveA;
                 destB = csPointSample.moveB;
             }
+
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
             transform.position = Vector3.Lerp(transform.position, obj.position, speed);
@@ -37,10 +39,9 @@ public class csMover_Jang : MonoBehaviour
                 csMain.r_coordinates[destA, destB] = true;
                 csMain.player = true;
                 csMain.check = false;
-                destA = 0;
-                destB = 0;
-                speed = 0.0f;
                 csMain.r_Jang = false;
+                gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                speed = 0.0f;
             }
         }
     }
@@ -93,6 +94,31 @@ public class csMover_Jang : MonoBehaviour
                             GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
                             GameObject.Find("(" + tempA + "," + (tempB + i) + ")").transform.rotation);
                 }
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (!gameObject.GetComponent<BoxCollider>().isTrigger)
+        {
+            int x, y;
+            if (csMain.eat)
+            {
+                x = csPointKillSample.moveA;
+                y = csPointKillSample.moveB;
+            }
+            else
+            {
+                x = csPointSample.moveA;
+                y = csPointSample.moveB;
+            }
+
+            if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
+            {
+                csMain.r_coordinates[x, y] = false;
+
+                Destroy(gameObject);
             }
         }
     }

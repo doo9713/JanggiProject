@@ -15,19 +15,19 @@ public class csMover_Ja : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (csMain.eat)
-        {
-            destA = csPointKillSample.moveA;
-            destB = csPointKillSample.moveB;
-        }
-        else
-        {
-            destA = csPointSample.moveA;
-            destB = csPointSample.moveB;
-        }
-
         if (csMain.check && !csMain.player && csMain.r_Ja)
         {
+            if (csMain.eat)
+            {
+                destA = csPointKillSample.moveA;
+                destB = csPointKillSample.moveB;
+            }
+            else
+            {
+                destA = csPointSample.moveA;
+                destB = csPointSample.moveB;
+            }
+
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
@@ -39,11 +39,9 @@ public class csMover_Ja : MonoBehaviour
                 csMain.r_coordinates[destA, destB] = true;
                 csMain.player = true;
                 csMain.check = false;
-                destA = 0;
-                destB = 0;
-                speed = 0.0f;
                 csMain.r_Ja = false;
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                speed = 0.0f;
             }
         }
     }
@@ -89,7 +87,24 @@ public class csMover_Ja : MonoBehaviour
     {
         if (!gameObject.GetComponent<BoxCollider>().isTrigger)
         {
-            Destroy(gameObject);
+            int x, y;
+            if (csMain.eat)
+            {
+                x = csPointKillSample.moveA;
+                y = csPointKillSample.moveB;
+            }
+            else
+            {
+                x = csPointSample.moveA;
+                y = csPointSample.moveB;
+            }
+
+            if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
+            {
+                csMain.r_coordinates[x, y] = false;
+
+                Destroy(gameObject);
+            }
         }
     }
 }

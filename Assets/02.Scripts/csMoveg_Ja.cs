@@ -5,7 +5,6 @@ public class csMoveg_Ja : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
-    public GameObject dead;
 
     Transform obj;
 
@@ -16,19 +15,19 @@ public class csMoveg_Ja : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (csMain.eat)
-        {
-            destA = csPointKillSample.moveA;
-            destB = csPointKillSample.moveB;
-        }
-        else
-        {
-            destA = csPointSample.moveA;
-            destB = csPointSample.moveB;
-        }
-
         if (csMain.check && csMain.player && csMain.g_Ja)
         {
+            if (csMain.eat)
+            {
+                destA = csPointKillSample.moveA;
+                destB = csPointKillSample.moveB;
+            }
+            else
+            {
+                destA = csPointSample.moveA;
+                destB = csPointSample.moveB;
+            }
+
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
@@ -40,11 +39,9 @@ public class csMoveg_Ja : MonoBehaviour
                 csMain.g_coordinates[destA, destB] = true;
                 csMain.player = false;
                 csMain.check = false;
-                destA = 0;
-                destB = 0;
-                speed = 0.0f;
                 csMain.g_Ja = false;
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                speed = 0.0f;
             }
         }
     }
@@ -90,25 +87,23 @@ public class csMoveg_Ja : MonoBehaviour
     {
         if (!gameObject.GetComponent<BoxCollider>().isTrigger)
         {
-            Destroy(gameObject);
-
-            switch (csMain.g_deadPiece)
+            int x, y;
+            if (csMain.eat)
             {
-                case 0:
-                    Instantiate(dead,
-                         GameObject.Find("(3,-1)").transform.position + Vector3.forward * 0.26f,
-                         GameObject.Find("(3,-1)").transform.rotation);
-                    break;
-                case 1:
-                    Instantiate(dead,
-                         GameObject.Find("(2,-1)").transform.position + Vector3.forward * 0.26f,
-                         GameObject.Find("(2,-1)").transform.rotation);
-                    break;
-                case 2:
-                    Instantiate(dead,
-                         GameObject.Find("(1,-1)").transform.position + Vector3.forward * 0.26f,
-                         GameObject.Find("(1,-1)").transform.rotation);
-                    break;
+                x = csPointKillSample.moveA;
+                y = csPointKillSample.moveB;
+            }
+            else
+            {
+                x = csPointSample.moveA;
+                y = csPointSample.moveB;
+            }
+
+            if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
+            {
+                csMain.g_coordinates[x, y] = false;
+
+                Destroy(gameObject);
             }
         }
     }
