@@ -18,7 +18,7 @@ public class csPointKill : MonoBehaviour
                 }
         }
 
-        csMain.check = true;
+        csMain.move = true;
         csMain.eat = true;
 
         var clones = GameObject.FindGameObjectsWithTag("clone");

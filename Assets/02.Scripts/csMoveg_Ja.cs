@@ -10,13 +10,13 @@ public class csMoveg_Ja : MonoBehaviour
     Transform obj;
 
     float speed = 0.0f;
-    int tempA = 0, tempB = 0;
+    int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
 
     // Update is called once per frame
     void Update()
     {
-        if (csMain.check && csMain.player && csMain.g_Ja)
+        if (csMain.move && csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
         {
             if (csMain.eat)
             {
@@ -39,10 +39,12 @@ public class csMoveg_Ja : MonoBehaviour
                 csMain.g_coordinates[tempA, tempB] = false;
                 csMain.g_coordinates[destA, destB] = true;
                 csMain.player = false;
-                csMain.check = false;
-                csMain.g_Ja = false;
+                csMain.move = false;
+                csMain.realmove = Vector3.zero;
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
                 speed = 0.0f;
+                tempA = 10;
+                tempB = 10;
             }
         }
     }
@@ -51,11 +53,7 @@ public class csMoveg_Ja : MonoBehaviour
     {
         if (csMain.player)
         {
-            csMain.g_Sang = false;
-            csMain.g_Jang = false;
-            csMain.g_Ja = true;
-            csMain.g_Wang = false;
-            csMain.g_Dead = false;
+            csMain.realmove = transform.position;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)

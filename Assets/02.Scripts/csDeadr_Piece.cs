@@ -6,11 +6,12 @@ public class csDeadr_Piece : MonoBehaviour
     public GameObject point;
     public GameObject use;
 
+    int tempA = 10, tempB = -1;
     int destA = 0, destB = 0;
 
     void Update()
     {
-        if (csMain.check && !csMain.player && csMain.r_Dead)
+        if (csMain.move && !csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
         {
             destA = csPoint.moveA;
             destB = csPoint.moveB;
@@ -23,8 +24,10 @@ public class csDeadr_Piece : MonoBehaviour
 
             csMain.r_coordinates[destA, destB] = true;
             csMain.player = true;
-            csMain.check = false;
-            csMain.r_Dead = false;
+            csMain.move = false;
+            csMain.realmove = Vector3.zero;
+            tempA = 10;
+            tempB = -1;
         }
     }
 
@@ -32,15 +35,17 @@ public class csDeadr_Piece : MonoBehaviour
     {
         if (!csMain.player)
         {
-            csMain.r_Ja = false;
-            csMain.r_Jang = false;
-            csMain.r_Sang = false;
-            csMain.r_Wang = false;
-            csMain.r_Dead = true;
+            csMain.realmove = transform.position;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
                 Destroy(clone);
+
+            for (int i = 1; i < 4; i++)
+            {
+                if (transform.position == GameObject.Find("(" + i + ",-1)").transform.position)
+                    tempA = i;
+            }
 
             for (int i = 1; i < 4; i++)
             {

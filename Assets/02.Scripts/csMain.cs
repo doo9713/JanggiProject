@@ -5,23 +5,13 @@ public class csMain : MonoBehaviour
 {
     public static bool player = true;       // true is player1
                                             // false is player2
-    public static bool check = false;       // move check
+    public static bool move = false;       // move check
 
     public static bool[,] r_coordinates = new bool[4, 3];   // check where is piece
     public static bool[,] g_coordinates = new bool[4, 3];
 
-    /* check all piece clicked */
-    public static bool g_Jang = false;
-    public static bool g_Sang = false;
-    public static bool g_Wang = false;
-    public static bool g_Ja = false;
-    public static bool g_Dead = false;
-
-    public static bool r_Jang = false;
-    public static bool r_Sang = false;
-    public static bool r_Wang = false;
-    public static bool r_Ja = false;
-    public static bool r_Dead = false;
+    /* check click object position */
+    public static Vector3 realmove = Vector3.zero;
 
     /* check eat */
     public static bool eat = false;     // ture is eat
