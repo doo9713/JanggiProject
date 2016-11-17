@@ -4,11 +4,40 @@ using System.Collections;
 public class csDeadg_Piece : MonoBehaviour
 {
     public GameObject point;
+    public GameObject use;
+
+    int destA = 0, destB = 0;
+
+    void Update()
+    {
+        if (csMain.check && csMain.player && csMain.g_Dead)
+        {
+            destA = csPoint.moveA;
+            destB = csPoint.moveB;
+
+            Instantiate(use,
+                GameObject.Find("(" + destA + "," + destB + ")").transform.position,
+                Quaternion.Euler(0, 0, 0));
+
+            Destroy(gameObject);
+
+            csMain.g_coordinates[destA, destB] = true;
+            csMain.player = false;
+            csMain.check = false;
+            csMain.g_Dead = false;
+        }
+    }
 
     void OnMouseDown()
     {
         if (csMain.player)
         {
+            csMain.g_Ja = false;
+            csMain.g_Jang = false;
+            csMain.g_Sang = false;
+            csMain.g_Wang = false;
+            csMain.g_Dead = true;
+
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
                 Destroy(clone);

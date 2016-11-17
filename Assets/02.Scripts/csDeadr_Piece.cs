@@ -10,7 +10,7 @@ public class csDeadr_Piece : MonoBehaviour
 
     void Update()
     {
-        if (csMain.check && !csMain.player)
+        if (csMain.check && !csMain.player && csMain.r_Dead)
         {
             destA = csPoint.moveA;
             destB = csPoint.moveB;
@@ -21,10 +21,10 @@ public class csDeadr_Piece : MonoBehaviour
 
             Destroy(gameObject);
 
-            csMain.g_coordinates[destA, destB] = true;
-            csMain.player = false;
+            csMain.r_coordinates[destA, destB] = true;
+            csMain.player = true;
             csMain.check = false;
-            check = false;
+            csMain.r_Dead = false;
         }
     }
 
@@ -32,6 +32,12 @@ public class csDeadr_Piece : MonoBehaviour
     {
         if (!csMain.player)
         {
+            csMain.r_Ja = false;
+            csMain.r_Jang = false;
+            csMain.r_Sang = false;
+            csMain.r_Wang = false;
+            csMain.r_Dead = true;
+
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
                 Destroy(clone);

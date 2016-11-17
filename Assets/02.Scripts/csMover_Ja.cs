@@ -55,6 +55,7 @@ public class csMover_Ja : MonoBehaviour
             csMain.r_Jang = false;
             csMain.r_Ja = true;
             csMain.r_Wang = false;
+            csMain.r_Dead = false;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
@@ -70,7 +71,7 @@ public class csMover_Ja : MonoBehaviour
                     }
             }
 
-            if (tempA + 1 < 4 && !csMain.r_coordinates[tempA - 1, tempB])
+            if (tempA - 1 > -1 && !csMain.r_coordinates[tempA - 1, tempB])
             {
                 if (!csMain.g_coordinates[tempA - 1, tempB])
                     Instantiate(point,

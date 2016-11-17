@@ -55,6 +55,7 @@ public class csMoveg_Ja : MonoBehaviour
             csMain.g_Jang = false;
             csMain.g_Ja = true;
             csMain.g_Wang = false;
+            csMain.g_Dead = false;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)

@@ -55,6 +55,7 @@ public class csMover_Jang : MonoBehaviour
             csMain.r_Jang = true;
             csMain.r_Sang = false;
             csMain.r_Wang = false;
+            csMain.r_Dead = false;
 
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)

@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 196530, guid: 3fc99c6b3250f864abd83e56f6f0cc18, type: 2}
+  use: {fileID: 100084, guid: bd5c4adf40fd51440ad37d50783c5960, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

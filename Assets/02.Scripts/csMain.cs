@@ -15,11 +15,13 @@ public class csMain : MonoBehaviour
     public static bool g_Sang = false;
     public static bool g_Wang = false;
     public static bool g_Ja = false;
+    public static bool g_Dead = false;
 
     public static bool r_Jang = false;
     public static bool r_Sang = false;
     public static bool r_Wang = false;
     public static bool r_Ja = false;
+    public static bool r_Dead = false;
 
     /* check eat */
     public static bool eat = false;     // ture is eat
