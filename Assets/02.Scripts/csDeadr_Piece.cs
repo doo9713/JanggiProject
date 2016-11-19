@@ -6,7 +6,7 @@ public class csDeadr_Piece : MonoBehaviour
     public GameObject point;
     public GameObject use;
 
-    int tempA = 10, tempB = -1;
+    int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
 
     void Update()
@@ -27,7 +27,7 @@ public class csDeadr_Piece : MonoBehaviour
             csMain.move = false;
             csMain.realmove = Vector3.zero;
             tempA = 10;
-            tempB = -1;
+            tempB = 10;
         }
     }
 
@@ -44,7 +44,11 @@ public class csDeadr_Piece : MonoBehaviour
             for (int i = 1; i < 4; i++)
             {
                 if (transform.position == GameObject.Find("(" + i + ",-1)").transform.position)
+                {
                     tempA = i;
+                    tempB = -1;
+                }
+                    
             }
 
             for (int i = 1; i < 4; i++)

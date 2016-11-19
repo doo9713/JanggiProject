@@ -6,7 +6,7 @@ public class csDeadg_Piece : MonoBehaviour
     public GameObject point;
     public GameObject use;
 
-    int tempA = 10, tempB = 3;
+    int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
 
     void Update()
@@ -27,7 +27,7 @@ public class csDeadg_Piece : MonoBehaviour
             csMain.move = false;
             csMain.realmove = Vector3.zero;
             tempA = 10;
-            tempB = 3;
+            tempB = 10;
         }
     }
 
@@ -44,7 +44,11 @@ public class csDeadg_Piece : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 if (transform.position == GameObject.Find("(" + i + ",3)").transform.position)
+                {
                     tempA = i;
+                    tempB = 3;
+                }
+
             }
 
             for (int i = 0; i < 3; i++)
