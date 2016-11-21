@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csMover_Sang : MonoBehaviour
+public class csMoveg_Hu : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
@@ -16,7 +16,7 @@ public class csMover_Sang : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (csMain.move && !csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
+        if (csMain.move && csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
         {
             if (csMain.eat)
             {
@@ -36,9 +36,9 @@ public class csMover_Sang : MonoBehaviour
 
             if (transform.position == obj.position)
             {
-                csMain.r_coordinates[tempA, tempB] = false;
-                csMain.r_coordinates[destA, destB] = true;
-                csMain.player = true;
+                csMain.g_coordinates[tempA, tempB] = false;
+                csMain.g_coordinates[destA, destB] = true;
+                csMain.player = false;
                 csMain.move = false;
                 csMain.realmove = Vector3.zero;
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
@@ -51,7 +51,7 @@ public class csMover_Sang : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!csMain.player)
+        if (csMain.player)
         {
             csMain.realmove = transform.position;
 
@@ -70,31 +70,16 @@ public class csMover_Sang : MonoBehaviour
                     }
             }
 
-            for (int i = -1; i < 2; i += 2)
+            if (tempA + 1 < 4 && !csMain.g_coordinates[tempA + 1, tempB])
             {
-                if ((tempA + i > -1 && tempA + i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA + i, tempB + i])
-                {
-                    if (!csMain.g_coordinates[tempA + i, tempB + i])
-                        Instantiate(point,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.rotation);
-                    else
-                        Instantiate(pointkill,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.rotation);
-                }
-
-                if ((tempA - i > -1 && tempA - i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA - i, tempB + i])
-                {
-                    if (!csMain.g_coordinates[tempA - i, tempB + i])
-                        Instantiate(point,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.rotation);
-                    else
-                        Instantiate(pointkill,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.rotation);
-                }
+                if (!csMain.r_coordinates[tempA + 1, tempB])
+                    Instantiate(point,
+                           GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.position + Vector3.forward * 0.26f,
+                           GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.rotation);
+                else
+                    Instantiate(pointkill,
+                           GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.position - Vector3.forward * 0.26f,
+                           GameObject.Find("(" + (tempA + 1) + "," + tempB + ")").transform.rotation);
             }
         }
     }
@@ -104,6 +89,7 @@ public class csMover_Sang : MonoBehaviour
         if (!gameObject.GetComponent<BoxCollider>().isTrigger)
         {
             int x, y;
+
             if (csMain.eat)
             {
                 x = csPointKill.moveA;
@@ -117,17 +103,17 @@ public class csMover_Sang : MonoBehaviour
 
             if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
             {
-                csMain.r_coordinates[x, y] = false;
+                csMain.g_coordinates[x, y] = false;
 
                 Destroy(gameObject);
 
                 Instantiate(dead,
-                     GameObject.Find("(" + csMain.deadr_Piece + ",3)").transform.position,
-                     Quaternion.Euler(0, 0, 0));
+                          GameObject.Find("(" + (3 - csMain.deadg_Piece) + ",-1)").transform.position,
+                          Quaternion.Euler(0, 0, 180));
 
-                csMain.deadr_Piece++;
-                if (csMain.deadr_Piece == 3)
-                    csMain.deadr_Piece = 0;
+                csMain.deadg_Piece++;
+                if (csMain.deadg_Piece == 3)
+                    csMain.deadg_Piece = 0;
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class csMover_Sang : MonoBehaviour
+public class csMover_Hu : MonoBehaviour
 {
     public GameObject point;
     public GameObject pointkill;
@@ -70,31 +70,16 @@ public class csMover_Sang : MonoBehaviour
                     }
             }
 
-            for (int i = -1; i < 2; i += 2)
+            if (tempA - 1 > -1 && !csMain.r_coordinates[tempA - 1, tempB])
             {
-                if ((tempA + i > -1 && tempA + i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA + i, tempB + i])
-                {
-                    if (!csMain.g_coordinates[tempA + i, tempB + i])
-                        Instantiate(point,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.rotation);
-                    else
-                        Instantiate(pointkill,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA + i) + "," + (tempB + i) + ")").transform.rotation);
-                }
-
-                if ((tempA - i > -1 && tempA - i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA - i, tempB + i])
-                {
-                    if (!csMain.g_coordinates[tempA - i, tempB + i])
-                        Instantiate(point,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.position + Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.rotation);
-                    else
-                        Instantiate(pointkill,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.position - Vector3.forward * 0.26f,
-                            GameObject.Find("(" + (tempA - i) + "," + (tempB + i) + ")").transform.rotation);
-                }
+                if (!csMain.g_coordinates[tempA - 1, tempB])
+                    Instantiate(point,
+                           GameObject.Find("(" + (tempA - 1) + "," + tempB + ")").transform.position + Vector3.forward * 0.26f,
+                           GameObject.Find("(" + (tempA - 1) + "," + tempB + ")").transform.rotation);
+                else
+                    Instantiate(pointkill,
+                           GameObject.Find("(" + (tempA - 1) + "," + tempB + ")").transform.position - Vector3.forward * 0.26f,
+                           GameObject.Find("(" + (tempA - 1) + "," + tempB + ")").transform.rotation);
             }
         }
     }
@@ -122,8 +107,8 @@ public class csMover_Sang : MonoBehaviour
                 Destroy(gameObject);
 
                 Instantiate(dead,
-                     GameObject.Find("(" + csMain.deadr_Piece + ",3)").transform.position,
-                     Quaternion.Euler(0, 0, 0));
+                    GameObject.Find("(" + csMain.deadr_Piece + ",3)").transform.position,
+                    Quaternion.Euler(0, 0, 0));
 
                 csMain.deadr_Piece++;
                 if (csMain.deadr_Piece == 3)
@@ -132,3 +117,4 @@ public class csMover_Sang : MonoBehaviour
         }
     }
 }
+

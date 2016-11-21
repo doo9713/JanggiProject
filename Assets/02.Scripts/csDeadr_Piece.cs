@@ -41,6 +41,7 @@ public class csDeadr_Piece : MonoBehaviour
             foreach (var clone in clones)
                 Destroy(clone);
 
+            /* 게임 오브젝트의 위치 검색 */
             for (int i = 1; i < 4; i++)
             {
                 if (transform.position == GameObject.Find("(" + i + ",-1)").transform.position)
