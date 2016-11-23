@@ -6,6 +6,7 @@ public class csMover_Ja : MonoBehaviour
     public GameObject point;
     public GameObject pointkill;
     public GameObject dead;
+    public GameObject r_hu;
 
     Transform obj;
 
@@ -36,6 +37,15 @@ public class csMover_Ja : MonoBehaviour
 
             if (transform.position == obj.position)
             {
+                if (destA == 0)
+                {
+                    Instantiate(r_hu,
+                        GameObject.Find("(" + destA + "," + destB + ")").transform.position,
+                        Quaternion.Euler(0, 0, 180));
+
+                    Destroy(gameObject);
+                }
+
                 csMain.r_coordinates[tempA, tempB] = false;
                 csMain.r_coordinates[destA, destB] = true;
                 csMain.player = true;

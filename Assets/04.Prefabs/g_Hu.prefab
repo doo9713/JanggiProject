@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6501378}
   - 23: {fileID: 2373756}
   - 54: {fileID: 5401392}
+  - 114: {fileID: 11414742}
   m_Layer: 0
   m_Name: g_Hu
   m_TagString: Untagged
@@ -92,6 +93,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11414742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a93313d06242e94e94bdbdf1f6406ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: {fileID: 196530, guid: 3fc99c6b3250f864abd83e56f6f0cc18, type: 2}
+  pointkill: {fileID: 102154, guid: e80b4d9b44301054f9f355134913f0cd, type: 2}
+  dead: {fileID: 128574, guid: 3176fd058ad9d5d4283533d63e8932c4, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

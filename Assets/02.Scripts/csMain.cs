@@ -3,8 +3,8 @@ using System.Collections;
 
 public class csMain : MonoBehaviour
 {
-    public static bool player = true;       // true is player1
-                                            // false is player2
+    public static bool player = true;      // true is player1
+                                           // false is player2
     public static bool move = false;       // move check
 
     public static bool[,] r_coordinates = new bool[4, 3];   // check where is piece

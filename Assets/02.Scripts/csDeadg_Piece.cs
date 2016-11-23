@@ -49,7 +49,6 @@ public class csDeadg_Piece : MonoBehaviour
                     tempA = i;
                     tempB = 3;
                 }
-
             }
 
             for (int i = 0; i < 3; i++)

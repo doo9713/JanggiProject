@@ -6,6 +6,7 @@ public class csMoveg_Ja : MonoBehaviour
     public GameObject point;
     public GameObject pointkill;
     public GameObject dead;
+    public GameObject g_hu;
 
     Transform obj;
 
@@ -36,6 +37,15 @@ public class csMoveg_Ja : MonoBehaviour
 
             if (transform.position == obj.position)
             {
+                if(destA == 3)
+                {
+                    Instantiate(g_hu,  
+                        GameObject.Find("(" + destA + "," + destB + ")").transform.position,
+                        Quaternion.Euler(0, 0, 0));
+
+                    Destroy(gameObject);
+                }
+
                 csMain.g_coordinates[tempA, tempB] = false;
                 csMain.g_coordinates[destA, destB] = true;
                 csMain.player = false;
