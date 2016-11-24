@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 196530, guid: 3fc99c6b3250f864abd83e56f6f0cc18, type: 2}
   pointkill: {fileID: 102154, guid: e80b4d9b44301054f9f355134913f0cd, type: 2}
-  dead: {fileID: 100084, guid: bd5c4adf40fd51440ad37d50783c5960, type: 2}
+  dead: {fileID: 197918, guid: 35fff038ffa52764da54aff2321a1910, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

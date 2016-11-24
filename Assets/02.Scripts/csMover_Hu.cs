@@ -70,6 +70,7 @@ public class csMover_Hu : MonoBehaviour
                     }
             }
 
+            /* 움직일수 있는 좌표 표시 */
             if (tempA + 1 < 4 && !csMain.r_coordinates[tempA + 1, tempB])
             {
                 if (!csMain.g_coordinates[tempA + 1, tempB])

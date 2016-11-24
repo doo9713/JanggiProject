@@ -70,6 +70,7 @@ public class csMoveg_Hu : MonoBehaviour
                     }
             }
 
+            /* 움직일수 있는 좌표 표시 */
             if (tempA - 1 > -1 && !csMain.g_coordinates[tempA - 1, tempB])
             {
                 if (!csMain.r_coordinates[tempA - 1, tempB])

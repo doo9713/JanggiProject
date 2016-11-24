@@ -69,6 +69,7 @@ public class csMoveg_Wang : MonoBehaviour
                     }
             }
 
+            /* 움직일수 있는 좌표 표시 */
             for (int i = -1; i < 2; i++)
             {
                 for (int j = -1; j < 2; j++)

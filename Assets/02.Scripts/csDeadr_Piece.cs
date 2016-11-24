@@ -52,6 +52,7 @@ public class csDeadr_Piece : MonoBehaviour
                     
             }
 
+            /* 움직일수 있는 좌표 표시 */
             for (int i = 1; i < 4; i++)
             {
                 for (int j = 0; j < 3; j++)

@@ -70,6 +70,7 @@ public class csMover_Sang : MonoBehaviour
                     }
             }
 
+            /* 움직일수 있는 좌표 표시 */
             for (int i = -1; i < 2; i += 2)
             {
                 if ((tempA + i > -1 && tempA + i < 4) && (tempB + i > -1 && tempB + i < 3) && !csMain.r_coordinates[tempA + i, tempB + i])
