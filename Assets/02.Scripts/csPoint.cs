@@ -19,9 +19,10 @@ public class csPoint : MonoBehaviour
                 }
         }
 
-        csMain.move = true;
-        csMain.eat = false;
+        csMain.move = true;     // 움직임 판단
+        csMain.eat = false;     // 공격 판단
 
+        /* 생성되었던 포인트 제거 */
         var clones = GameObject.FindGameObjectsWithTag("clone");
         foreach (var clone in clones)
             Destroy(clone);

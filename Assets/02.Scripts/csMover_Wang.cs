@@ -54,6 +54,7 @@ public class csMover_Wang : MonoBehaviour
         {
             csMain.realmove = transform.position;
 
+            /* 생성되었던 포인트 제거 */
             var clones = GameObject.FindGameObjectsWithTag("clone");
             foreach (var clone in clones)
                 Destroy(clone);

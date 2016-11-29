@@ -7,6 +7,7 @@ public class csSelect : MonoBehaviour
 	public void playbutton()
     {
         SceneManager.LoadScene("01.PlayScenes", LoadSceneMode.Single);
+        csMain.player = true;   // 무조건 초록팀부터 시작
     }
 
     public void menubutton()
