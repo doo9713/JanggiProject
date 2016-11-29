@@ -64,7 +64,5 @@ public class csMain : MonoBehaviour
         r_coordinates[3, 1] = true;
         r_coordinates[3, 2] = true;
         r_coordinates[2, 1] = true;
-
-        // Hello!!!
     }
 }
