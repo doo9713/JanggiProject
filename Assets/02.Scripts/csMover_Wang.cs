@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class csMover_Wang : MonoBehaviour
 {
+    public Image g_panel;
+    public Image r_panel;
     public GameObject point;
     public GameObject pointkill;
 
@@ -11,12 +15,22 @@ public class csMover_Wang : MonoBehaviour
     float speed = 0.0f;
     int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
+    bool win_check = false;
+
+    void Start()
+    {
+        g_panel.gameObject.SetActive(false);
+        r_panel.gameObject.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (!csMain.player && win_check)
+            r_panel.gameObject.SetActive(true);
+
         if (csMain.move && !csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
-        {
+        { 
             if (csMain.eat)
             {
                 destA = csPointKill.moveA;
@@ -35,6 +49,8 @@ public class csMover_Wang : MonoBehaviour
 
             if (transform.position == obj.position)
             {
+                if (destA == 0)
+                    win_check = true;
                 csMain.r_coordinates[tempA, tempB] = false;
                 csMain.r_coordinates[destA, destB] = true;
                 csMain.player = true;
@@ -112,6 +128,8 @@ public class csMover_Wang : MonoBehaviour
                 csMain.r_coordinates[x, y] = false;
 
                 Destroy(gameObject);
+
+                g_panel.gameObject.SetActive(true);
             }
         }
     }
