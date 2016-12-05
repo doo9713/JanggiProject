@@ -17,20 +17,16 @@ public class csMover_Wang : MonoBehaviour
     int destA = 0, destB = 0;
     bool win_check = false;
 
-    void Start()
-    {
-        g_panel.gameObject.SetActive(false);
-        r_panel.gameObject.SetActive(false);
-    }
-
     // Update is called once per frame
     void Update()
     {
+        /* 승리화면 활성화 */
         if (!csMain.player && win_check)
             r_panel.gameObject.SetActive(true);
 
         if (csMain.move && !csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
-        { 
+        {
+            /* 목표 좌표 저장 */
             if (csMain.eat)
             {
                 destA = csPointKill.moveA;
@@ -45,8 +41,9 @@ public class csMover_Wang : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
-            transform.position = Vector3.Lerp(transform.position, obj.position, speed);
+            transform.position = Vector3.Lerp(transform.position, obj.position, speed);     // 물체이동
 
+            /* 턴 종료 후 값 재설정 */
             if (transform.position == obj.position)
             {
                 if (destA == 0)
@@ -112,6 +109,7 @@ public class csMover_Wang : MonoBehaviour
         if (!gameObject.GetComponent<BoxCollider>().isTrigger)
         {
             int x, y;
+            /* 목표 좌표 저장 */
             if (csMain.eat)
             {
                 x = csPointKill.moveA;
@@ -123,12 +121,14 @@ public class csMover_Wang : MonoBehaviour
                 y = csPoint.moveB;
             }
 
+            /* 상대가 공격할 경우 오브젝트를 지우고 포로오브젝트 생성 */
             if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
             {
                 csMain.r_coordinates[x, y] = false;
 
                 Destroy(gameObject);
 
+                /* 승리화면 활성화 */
                 g_panel.gameObject.SetActive(true);
             }
         }

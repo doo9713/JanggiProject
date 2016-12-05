@@ -18,6 +18,7 @@ public class csMoveg_Jang : MonoBehaviour
     {
         if (csMain.move && csMain.player && (csMain.realmove == GameObject.Find("(" + tempA + "," + tempB + ")").transform.position))
         {
+            /* 목표 좌표 저장 */
             if (csMain.eat)
             {
                 destA = csPointKill.moveA;
@@ -32,8 +33,9 @@ public class csMoveg_Jang : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().isTrigger = true;
             obj = GameObject.Find("(" + destA + "," + destB + ")").transform;
             speed += Time.deltaTime * 5.0f;
-            transform.position = Vector3.Lerp(transform.position, obj.position, speed);
+            transform.position = Vector3.Lerp(transform.position, obj.position, speed);     // 물체이동
 
+            /* 턴 종료 후 값 재설정 */
             if (transform.position == obj.position)
             {
                 csMain.g_coordinates[tempA, tempB] = false;
@@ -106,6 +108,7 @@ public class csMoveg_Jang : MonoBehaviour
         if (!gameObject.GetComponent<BoxCollider>().isTrigger)
         {
             int x, y;
+            /* 목표 좌표 저장 */
             if (csMain.eat)
             {
                 x = csPointKill.moveA;
@@ -117,6 +120,7 @@ public class csMoveg_Jang : MonoBehaviour
                 y = csPoint.moveB;
             }
 
+            /* 상대가 공격할 경우 오브젝트를 지우고 포로오브젝트 생성 */
             if (transform.position == GameObject.Find("(" + x + "," + y + ")").transform.position)
             {
                 csMain.g_coordinates[x, y] = false;
