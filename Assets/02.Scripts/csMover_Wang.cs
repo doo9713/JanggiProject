@@ -9,6 +9,7 @@ public class csMover_Wang : MonoBehaviour
     public Image r_panel;
     public GameObject point;
     public GameObject pointkill;
+    public AudioSource _audio;
 
     Transform obj;
 
@@ -16,6 +17,11 @@ public class csMover_Wang : MonoBehaviour
     int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
     bool win_check = false;
+
+    public void Start()
+    {
+        _audio = Instantiate(_audio);
+    }
 
     // Update is called once per frame
     void Update()
@@ -46,6 +52,7 @@ public class csMover_Wang : MonoBehaviour
             /* 턴 종료 후 값 재설정 */
             if (transform.position == obj.position)
             {
+                _audio.Play();
                 if (destA == 0)
                     win_check = true;
                 csMain.r_coordinates[tempA, tempB] = false;

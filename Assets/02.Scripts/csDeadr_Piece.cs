@@ -5,9 +5,15 @@ public class csDeadr_Piece : MonoBehaviour
 {
     public GameObject point;
     public GameObject use;
+    public AudioSource _audio;
 
     int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
+
+    public void Start()
+    {
+        _audio = Instantiate(_audio);
+    }
 
     void Update()
     {
@@ -15,6 +21,8 @@ public class csDeadr_Piece : MonoBehaviour
         {
             destA = csPoint.moveA;
             destB = csPoint.moveB;
+
+            _audio.Play();
 
             Instantiate(use,
                 GameObject.Find("(" + destA + "," + destB + ")").transform.position,   

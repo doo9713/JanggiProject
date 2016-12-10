@@ -7,12 +7,18 @@ public class csMover_Ja : MonoBehaviour
     public GameObject pointkill;
     public GameObject dead;
     public GameObject r_hu;
+    public AudioSource _audio;
 
     Transform obj;
 
     float speed = 0.0f;
     int tempA = 10, tempB = 10;
     int destA = 0, destB = 0;
+
+    public void Start()
+    {
+        _audio = Instantiate(_audio);
+    }
 
     // Update is called once per frame
     void Update()
@@ -39,6 +45,8 @@ public class csMover_Ja : MonoBehaviour
             /* 턴 종료 후 값 재설정 */
             if (transform.position == obj.position)
             {
+                _audio.Play();
+
                 /* 상대 진영에 들어간 경우 HU로 변겅 */
                 if (destA == 0)
                 {

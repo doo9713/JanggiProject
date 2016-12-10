@@ -108,6 +108,7 @@ MonoBehaviour:
   pointkill: {fileID: 102154, guid: e80b4d9b44301054f9f355134913f0cd, type: 2}
   dead: {fileID: 128574, guid: 3176fd058ad9d5d4283533d63e8932c4, type: 2}
   g_hu: {fileID: 105688, guid: 1508d1430cf15a24a987b89e1cabc273, type: 2}
+  _audio: {fileID: 8206352, guid: c0a207077aab36546a8ae92dd21de507, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

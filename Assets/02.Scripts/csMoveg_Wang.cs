@@ -10,6 +10,7 @@ public class csMoveg_Wang : MonoBehaviour
     public Image r_panel;
     public GameObject point;
     public GameObject pointkill;
+    public AudioSource _audio;
 
     Transform obj;
 
@@ -23,6 +24,7 @@ public class csMoveg_Wang : MonoBehaviour
         /* 승리화면 숨김 */
         g_panel.gameObject.SetActive(false);
         r_panel.gameObject.SetActive(false);
+        _audio = Instantiate(_audio);
     }
 
     // Update is called once per frame
@@ -54,6 +56,7 @@ public class csMoveg_Wang : MonoBehaviour
             /* 턴 종료 후 값 재설정 */
             if (transform.position == obj.position)
             {
+                _audio.Play();
                 if (destA == 3)
                     win_check = true;
                 csMain.g_coordinates[tempA, tempB] = false;
