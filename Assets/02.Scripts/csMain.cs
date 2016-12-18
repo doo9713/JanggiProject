@@ -17,8 +17,8 @@ public class csMain : MonoBehaviour
     public static bool eat = false;     // ture is eat
                                         // false is not eat
 
-    public static int deadg_Piece = 0;
-    public static int deadr_Piece = 0;
+    public static int deadg_Piece = 0;  
+    public static int deadr_Piece = 0;  // 죽은 말에 ID지정 [0], [1], [2]
 
     void Start()
     {
